@@ -4,6 +4,9 @@
  * Licensed under the MIT License.
  */
  (() => {
+  if ("keyboard" in navigator && "lock" in navigator.keyboard) {
+    return;
+  }
   let locked = false;
 
   const origRequestFullscreen = Element.prototype.requestFullscreen;
@@ -15,20 +18,21 @@
     return origRequestFullscreen.call(this, options);
   };
 
-  navigator.keyboard = {
-    lock: () => {
-      const lockStateChanged = locked === false;
-      locked = true;
-      if (lockStateChanged && document.fullscreenElement && navigator.userActivation.isActive) {
-        document.fullscreenElement.requestFullscreen();
-      }
-    },
-    unlock: () => {
-      const lockStateChanged = locked === true;
-      locked = false;
-      if (lockStateChanged && document.fullscreenElement && navigator.userActivation.isActive) {
-        document.fullscreenElement.requestFullscreen();
-      }
-    },
-  };
+  if (!("keyboard" in navigator)) {
+    navigator.keyboard = {};
+  }
+  navigator.keyboard.lock = () => {
+    const lockStateChanged = locked === false;
+    locked = true;
+    if (lockStateChanged && document.fullscreenElement && navigator.userActivation.isActive) {
+      document.fullscreenElement.requestFullscreen();
+    }
+  }
+  navigator.keyboard.unlock = () => {
+    const lockStateChanged = locked === true;
+    locked = false;
+    if (lockStateChanged && document.fullscreenElement && navigator.userActivation.isActive) {
+      document.fullscreenElement.requestFullscreen();
+    }
+  }
 })();
