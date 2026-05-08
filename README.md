@@ -13,6 +13,10 @@ Maps `navigator.keyboard.lock()` / `unlock()` to the standardized Fullscreen key
 
 This script only affects the current document. The keyboard lock state is not passed down to child documents that call `requestFullscreen()`.
 
+The script tries to support any order of calling `requestFullscreen()` and `navigator.keyboard.lock()`. It thus fakes a `fullscreenchange` event, and actually goes fullscreen later (which will fire another `fullscreenchange` event).
+
+The recommended order is `navigator.keyboard.lock()` first, then `requestFullscreen()`.
+
 ## Browser support
 
 Works in browsers that support the standard API:
