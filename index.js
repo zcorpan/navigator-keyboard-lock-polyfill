@@ -21,27 +21,32 @@
   if (!("keyboard" in navigator)) {
     navigator.keyboard = {};
   }
+
   navigator.keyboard.lock = () => {
     const lockStateChanged = locked === false;
     locked = true;
     if (lockStateChanged && document.fullscreenElement && navigator.userActivation.isActive) {
       document.fullscreenElement.requestFullscreen();
     }
-  }
+    return Promise.resolve();
+  };
+
   navigator.keyboard.unlock = () => {
     const lockStateChanged = locked === true;
     locked = false;
     if (lockStateChanged && document.fullscreenElement && navigator.userActivation.isActive) {
       document.fullscreenElement.requestFullscreen();
     }
-  }
-
-  const origPermissionsQuery = Permissions.prototype.query;
-
-  Permissions.prototype.query = permissionDesc => {
-    if (permissionDesc.name === "keyboard-lock") {
-      return Promise.resolve({ state: "granted" });
-    }
-    return origPermissionsQuery.call(this, permissionDesc);
   };
+
+  if ("Permissions" in self && Permissions.prototype.query) {
+    const origPermissionsQuery = Permissions.prototype.query;
+
+    Permissions.prototype.query = permissionDesc => {
+      if (permissionDesc.name === "keyboard-lock") {
+        return Promise.resolve({ state: "granted" });
+      }
+      return origPermissionsQuery.call(this, permissionDesc);
+    };
+  }
 })();
