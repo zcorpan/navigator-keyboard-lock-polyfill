@@ -35,4 +35,13 @@
       document.fullscreenElement.requestFullscreen();
     }
   }
+
+  const origPermissionsQuery = Permissions.prototype.query;
+
+  Permissions.prototype.query = permissionDesc => {
+    if (permissionDesc.name === "keyboard-lock") {
+      return Promise.resolve({ state: "granted" });
+    }
+    return origPermissionsQuery.call(this, permissionDesc);
+  };
 })();

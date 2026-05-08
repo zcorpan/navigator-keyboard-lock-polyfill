@@ -9,6 +9,10 @@ A tiny polyfill for Chromium’s `navigator.keyboard.lock()` API.
 
 Maps `navigator.keyboard.lock()` / `unlock()` to the standardized Fullscreen keyboard lock (`requestFullscreen({ keyboardLock })`).
 
+## Limitations
+
+This script only affects the current document. The keyboard lock state is not passed down to child documents that call `requestFullscreen()`.
+
 ## Browser support
 
 Works in browsers that support the standard API:
