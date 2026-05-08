@@ -1,0 +1,29 @@
+{
+  "name": "navigator-keyboard-lock-polyfill",
+  "version": "0.1.0",
+  "description": "Polyfill for the navigator.keyboard.lock() API",
+  "license": "MIT",
+  "author": "Simon Pieters",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zcorpan/navigator-keyboard-lock-polyfill.git"
+  },
+  "homepage": "https://zcorpan.github.io/navigator-keyboard-lock-polyfill/demo.html",
+  "bugs": {
+    "url": "https://github.com/zcorpan/navigator-keyboard-lock-polyfill/issues"
+  },
+  "keywords": [
+    "navigator.keyboard",
+    "keyboard-lock",
+    "fullscreen",
+    "polyfill"
+  ],
+  "main": "./index.js",
+  "exports": "./index.js",
+  "files": [
+    "index.js",
+    "README.md",
+    "LICENSE"
+  ],
+  "sideEffects": true
+}

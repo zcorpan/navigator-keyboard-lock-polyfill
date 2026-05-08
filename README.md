@@ -19,7 +19,16 @@ Works in browsers that support the standard API:
 ## Usage
 
 ```html
-<script src="navigator-keyboard-lock-polyfill.js"></script>
+<script src="index.js"></script>
+```
+
+## npm
+
+```sh
+npm install navigator-keyboard-lock-polyfill
+```
+```js
+import "navigator-keyboard-lock-polyfill";
 ```
 
 ## License
