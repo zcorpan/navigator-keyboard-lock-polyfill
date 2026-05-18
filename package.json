@@ -20,6 +20,7 @@
   ],
   "main": "./index.js",
   "exports": "./index.js",
+  "browser": "./index.js",
   "files": [
     "index.js",
     "README.md",

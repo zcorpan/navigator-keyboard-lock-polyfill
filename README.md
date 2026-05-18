@@ -17,6 +17,14 @@ The script tries to support any order of calling `requestFullscreen()` and `navi
 
 The recommended order is `navigator.keyboard.lock()` first, then `requestFullscreen()`.
 
+## Security
+
+This package is a browser-only polyfill. It intentionally patches
+`Element.prototype.requestFullscreen`, `navigator.keyboard`, and
+`Permissions.prototype.query` to emulate Chromium's Keyboard Lock API.
+
+It has no dependencies and performs no network requests.
+
 ## Browser support
 
 Works in browsers that support the standard API:
@@ -30,7 +38,11 @@ Works in browsers that support the standard API:
 <script src="index.js"></script>
 ```
 
+See [demo](https://zcorpan.github.io/navigator-keyboard-lock-polyfill/demo.html).
+
 ## npm
+
+This polyfill is [available on NPM](https://www.npmjs.com/package/navigator-keyboard-lock-polyfill).
 
 ```sh
 npm install navigator-keyboard-lock-polyfill
