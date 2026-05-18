@@ -1,6 +1,6 @@
 {
   "name": "navigator-keyboard-lock-polyfill",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Polyfill for the navigator.keyboard.lock() API",
   "license": "MIT",
   "author": "Simon Pieters",
